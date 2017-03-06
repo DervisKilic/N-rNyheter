@@ -12,6 +12,9 @@
 		E9560B3D1E6D747200B86B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9560B3B1E6D747200B86B73 /* Main.storyboard */; };
 		E9560B3F1E6D747200B86B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9560B3E1E6D747200B86B73 /* Assets.xcassets */; };
 		E9560B421E6D747200B86B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9560B401E6D747200B86B73 /* LaunchScreen.storyboard */; };
+		E9560B4A1E6D752900B86B73 /* GPSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9560B491E6D752900B86B73 /* GPSHelper.swift */; };
+		E9560B4C1E6D9F1600B86B73 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E9560B4B1E6D9F1600B86B73 /* default.gpx */; };
+		E9560B4E1E6DA11200B86B73 /* NewsPapers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9560B4D1E6DA11200B86B73 /* NewsPapers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		E9560B3E1E6D747200B86B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9560B411E6D747200B86B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9560B431E6D747200B86B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9560B491E6D752900B86B73 /* GPSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSHelper.swift; sourceTree = "<group>"; };
+		E9560B4B1E6D9F1600B86B73 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
+		E9560B4D1E6DA11200B86B73 /* NewsPapers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPapers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +44,7 @@
 		E9560B2B1E6D747200B86B73 = {
 			isa = PBXGroup;
 			children = (
+				E9560B4B1E6D9F1600B86B73 /* default.gpx */,
 				E9560B361E6D747200B86B73 /* NärNyheter */,
 				E9560B351E6D747200B86B73 /* Products */,
 			);
@@ -60,6 +67,8 @@
 				E9560B3E1E6D747200B86B73 /* Assets.xcassets */,
 				E9560B401E6D747200B86B73 /* LaunchScreen.storyboard */,
 				E9560B431E6D747200B86B73 /* Info.plist */,
+				E9560B491E6D752900B86B73 /* GPSHelper.swift */,
+				E9560B4D1E6DA11200B86B73 /* NewsPapers.swift */,
 			);
 			path = "NärNyheter";
 			sourceTree = "<group>";
@@ -125,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9560B421E6D747200B86B73 /* LaunchScreen.storyboard in Resources */,
+				E9560B4C1E6D9F1600B86B73 /* default.gpx in Resources */,
 				E9560B3F1E6D747200B86B73 /* Assets.xcassets in Resources */,
 				E9560B3D1E6D747200B86B73 /* Main.storyboard in Resources */,
 			);
@@ -138,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9560B3A1E6D747200B86B73 /* ViewController.swift in Sources */,
+				E9560B4A1E6D752900B86B73 /* GPSHelper.swift in Sources */,
 				E9560B381E6D747200B86B73 /* AppDelegate.swift in Sources */,
+				E9560B4E1E6DA11200B86B73 /* NewsPapers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +312,7 @@
 				E9560B481E6D747200B86B73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
