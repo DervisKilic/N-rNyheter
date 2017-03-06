@@ -11,28 +11,19 @@ import CoreLocation
 
 class GPSHelper: NSObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
-    let regionRadius = 300.0
     let news = NewsPapers()
     var pos = ""
-    var papers : [String] = []
-    
+    let defaults = UserDefaults.standard
     
     func getRegion(){
         manager.delegate = self
         manager.requestLocation()
-    
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let location = locations.first {
-            
-
-            let posLat = location.coordinate.latitude
-            let posLong = location.coordinate.longitude
-            
-            print("Latitude: \(posLat)")
-            print("Longitude \(posLong)")
-            
             
             let geocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(location, completionHandler: { (position, e) -> Void in
@@ -40,14 +31,13 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                     print("Error:  \(e?.localizedDescription)")
                 } else {
                     if let myPosition = position?.first?.administrativeArea?.description{
-                    
-                        self.pos = myPosition
-                    print("Location:  \(myPosition)")
+                    self.pos = myPosition
                         
                     }
                     
                     if let p1 = self.news.newsPapers[self.pos]{
-                        self.papers = p1
+                        self.defaults.set(p1, forKey: "newsPapers")
+                        print(p1)
                     }
                 }
             })

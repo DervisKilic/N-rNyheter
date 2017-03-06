@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ui-pL-fUf">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,8 +19,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dru-d0-EAz">
+                                <rect key="frame" x="16" y="210" width="288" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Get News"/>
+                                <connections>
+                                    <segue destination="prf-Hg-40R" kind="show" id="rAW-wn-7dp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="h17-2C-5Ab"/>
@@ -28,22 +39,35 @@
             </objects>
             <point key="canvasLocation" x="1115.625" y="122.5"/>
         </scene>
-        <!--Table View Controller-->
+        <!--News Papers Table View Controller-->
         <scene sceneID="Jkp-SV-zKc">
             <objects>
-                <tableViewController id="prf-Hg-40R" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GTc-ec-Xv8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                <tableViewController id="prf-Hg-40R" customClass="NewsPapersTableViewController" customModule="Na_rNyheter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="42" sectionHeaderHeight="28" sectionFooterHeight="28" id="GTc-ec-Xv8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="an2-DG-olG">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="42" id="an2-DG-olG" customClass="CustomTableViewCell" customModule="Na_rNyheter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="42"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="an2-DG-olG" id="mO4-NS-LWj">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="paper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-kB-NHQ">
+                                            <rect key="frame" x="8" y="10" width="304" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="paper" destination="ltx-kB-NHQ" id="pYP-GA-RdB"/>
+                                    <segue destination="Mzl-zA-0Ov" kind="show" id="SD6-ct-CtJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -54,33 +78,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxc-Gk-8gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176.875" y="117.5"/>
+            <point key="canvasLocation" x="2176.875" y="122.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="Pxj-oN-bFY">
             <objects>
-                <viewController id="Mzl-zA-0Ov" sceneMemberID="viewController">
+                <viewController id="Mzl-zA-0Ov" customClass="WebViewController" customModule="Na_rNyheter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UoQ-EP-28f"/>
                         <viewControllerLayoutGuide type="bottom" id="EfL-Pf-emT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2e8-FC-c52">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-T0-eOw">
-                                <rect key="frame" x="16" y="28" width="288" height="432"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-T0-eOw">
+                                <rect key="frame" x="16" y="72" width="288" height="476"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zkX-T0-eOw" firstAttribute="top" secondItem="UoQ-EP-28f" secondAttribute="bottom" constant="8" symbolic="YES" id="CB0-cw-Tro"/>
+                            <constraint firstItem="zkX-T0-eOw" firstAttribute="leading" secondItem="2e8-FC-c52" secondAttribute="leadingMargin" id="HZr-x9-7Kv"/>
+                            <constraint firstItem="zkX-T0-eOw" firstAttribute="trailing" secondItem="2e8-FC-c52" secondAttribute="trailingMargin" id="a8e-b0-flX"/>
+                            <constraint firstAttribute="bottom" secondItem="zkX-T0-eOw" secondAttribute="bottom" constant="20" symbolic="YES" id="ajb-9J-qRS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="zkX-T0-eOw" id="g7Y-bG-HLg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L15-0d-C8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3146.25" y="118.75"/>
+            <point key="canvasLocation" x="3146.25" y="118.30985915492958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qRW-DE-AqR">
