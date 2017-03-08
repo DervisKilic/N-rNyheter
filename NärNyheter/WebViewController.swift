@@ -9,13 +9,15 @@
 import UIKit
 
 class WebViewController: UIViewController {
+
+    var url = URL(string: "")
+    
     @IBOutlet weak var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        webView.loadRequest(URLRequest(url: URL(string: "http://google.com")!))
-
+  
+        let URLRequests = URLRequest(url: url!)
+        webView.loadRequest(URLRequests)
     }
 }
