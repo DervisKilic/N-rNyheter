@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
-    let defaults = UserDefaults.standard
     let g1 = GPSHelper()
     
     override func viewDidLoad() {

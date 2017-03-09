@@ -16,15 +16,13 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
     let defaults = UserDefaults.standard
     
     func getRegion(){
+        manager.requestWhenInUseAuthorization()
         manager.delegate = self
         manager.requestLocation()
     }
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let location = locations.first {
-            
             let geocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(location, completionHandler: { (position, e) -> Void in
                 if e != nil {
@@ -36,8 +34,9 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                     }
                     
                     if let p1 = self.news.newsPapers[self.pos]{
+                        
                         self.defaults.set(p1, forKey: "newsPapers")
-                        print(p1)
+                        self.defaults.set(self.pos, forKey: "region")
                     }
                 }
             })
