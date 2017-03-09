@@ -75,8 +75,8 @@
 				E9560B431E6D747200B86B73 /* Info.plist */,
 				E9560B491E6D752900B86B73 /* GPSHelper.swift */,
 				E9560B4D1E6DA11200B86B73 /* NewsPapers.swift */,
-				E9560B4F1E6E029B00B86B73 /* NewsPapersTableViewController.swift */,
 				E9560B511E6E061000B86B73 /* CustomTableViewCell.swift */,
+				E9560B4F1E6E029B00B86B73 /* NewsPapersTableViewController.swift */,
 				E9560B551E6E113600B86B73 /* WebViewController.swift */,
 			);
 			path = "NärNyheter";

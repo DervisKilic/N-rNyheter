@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ui-pL-fUf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4gn-E6-Mx5">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,9 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dru-d0-EAz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dru-d0-EAz">
                                 <rect key="frame" x="16" y="210" width="288" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Get News"/>
                                 <connections>
                                     <segue destination="prf-Hg-40R" kind="show" id="rAW-wn-7dp"/>
@@ -32,12 +31,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dru-d0-EAz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="146" id="8Iw-iY-kNo"/>
+                            <constraint firstItem="Dru-d0-EAz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KpT-cc-LaK"/>
+                            <constraint firstItem="Dru-d0-EAz" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="lc0-JG-YcT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dru-d0-EAz" secondAttribute="bottom" constant="297" id="noM-4b-oNU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h17-2C-5Ab"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115.625" y="122.5"/>
+            <point key="canvasLocation" x="2113.125" y="121.47887323943662"/>
         </scene>
         <!--News Papers Table View Controller-->
         <scene sceneID="Jkp-SV-zKc">
@@ -74,15 +79,18 @@
                             <outlet property="delegate" destination="prf-Hg-40R" id="QP7-cU-1Pp"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Mzl-zA-0Ov" kind="show" identifier="s1" id="kcI-L7-u5m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxc-Gk-8gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176.875" y="122.5"/>
+            <point key="canvasLocation" x="3122" y="120"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="Pxj-oN-bFY">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mzl-zA-0Ov" customClass="WebViewController" customModule="Na_rNyheter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Mzl-zA-0Ov" customClass="WebViewController" customModule="Na_rNyheter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UoQ-EP-28f"/>
                         <viewControllerLayoutGuide type="bottom" id="EfL-Pf-emT"/>
@@ -92,26 +100,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-T0-eOw">
-                                <rect key="frame" x="16" y="72" width="288" height="410"/>
+                                <rect key="frame" x="16" y="64" width="288" height="484"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUf-UY-ttn">
-                                <rect key="frame" x="137" y="518" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="prf-Hg-40R" kind="show" id="T4C-QB-zGM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zkX-T0-eOw" firstAttribute="top" secondItem="UoQ-EP-28f" secondAttribute="bottom" constant="52" id="CB0-cw-Tro"/>
+                            <constraint firstItem="zkX-T0-eOw" firstAttribute="top" secondItem="UoQ-EP-28f" secondAttribute="bottom" id="CB0-cw-Tro"/>
                             <constraint firstItem="zkX-T0-eOw" firstAttribute="leading" secondItem="2e8-FC-c52" secondAttribute="leadingMargin" id="HZr-x9-7Kv"/>
-                            <constraint firstItem="BUf-UY-ttn" firstAttribute="centerX" secondItem="zkX-T0-eOw" secondAttribute="centerX" id="YXP-GO-hcz"/>
                             <constraint firstItem="zkX-T0-eOw" firstAttribute="trailing" secondItem="2e8-FC-c52" secondAttribute="trailingMargin" id="a8e-b0-flX"/>
-                            <constraint firstAttribute="bottom" secondItem="zkX-T0-eOw" secondAttribute="bottom" constant="86" id="ajb-9J-qRS"/>
-                            <constraint firstAttribute="bottom" secondItem="BUf-UY-ttn" secondAttribute="bottom" constant="20" symbolic="YES" id="gbB-ck-h7r"/>
+                            <constraint firstAttribute="bottom" secondItem="zkX-T0-eOw" secondAttribute="bottom" constant="20" id="ajb-9J-qRS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -120,28 +119,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L15-0d-C8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3146.25" y="118.30985915492958"/>
+            <point key="canvasLocation" x="4042.5" y="120.4225352112676"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="qRW-DE-AqR">
+        <scene sceneID="AdM-ys-tEa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ui-pL-fUf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4gn-E6-Mx5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kmM-Ml-3hL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GuE-o2-2MX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yfc-h7-9pl"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5bu-zo-eip"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gtg-dP-2hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39v-z1-ReC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="-696"/>
+            <point key="canvasLocation" x="1119" y="121"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="T4C-QB-zGM"/>
-    </inferredMetricsTieBreakers>
 </document>

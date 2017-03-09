@@ -12,6 +12,7 @@ class NewsPapersTableViewController: UITableViewController {
 
     let defaults = UserDefaults.standard
     var listNewsPaper : [String] = []
+    var link = ""
     var url = ""
 
     override func viewDidLoad() {
@@ -48,14 +49,25 @@ class NewsPapersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        let myWebView = self.storyboard!.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        let paper = listNewsPaper[indexPath.row].components(separatedBy: "#")
-        let link = paper[0]
+     
         
-        if let url = URL(string: link){
-            myWebView.url = url
-        self.present(myWebView, animated: true, completion: nil)
-        }
+        let paper = listNewsPaper[indexPath.row].components(separatedBy: "#")
+        link = paper[0]
+        
+        performSegue(withIdentifier: "s1", sender: self)
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "s1" {
+        let webView = segue.destination as! WebViewController
+            
+            if let url = URL(string: link){
+                webView.url = url
+            }
+        }
+  
+    }
+    
     
 }
