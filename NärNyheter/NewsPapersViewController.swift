@@ -21,6 +21,8 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         listNewsPaper = defaults.array(forKey: "newsPapers") as! [String]
         region.text = defaults.string(forKey: "region")!
         
@@ -42,13 +44,18 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         
         let paper = listNewsPaper[indexPath.row].components(separatedBy: "#")
         let name = paper[2]
+        let link = paper[1]
         let logo = paper[0]
         
         cell.logo.image = UIImage(named: logo)
         cell.paper.text = name
+        cell.name = name
+        cell.link = link
+        cell.logoName = logo
+        
+        
         
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

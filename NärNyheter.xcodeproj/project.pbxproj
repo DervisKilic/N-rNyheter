@@ -18,6 +18,7 @@
 		E9560B4E1E6DA11200B86B73 /* NewsPapers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9560B4D1E6DA11200B86B73 /* NewsPapers.swift */; };
 		E9560B521E6E061000B86B73 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9560B511E6E061000B86B73 /* CustomTableViewCell.swift */; };
 		E9560B561E6E113600B86B73 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9560B551E6E113600B86B73 /* WebViewController.swift */; };
+		E982F5411E76A57800CFE09B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982F5401E76A57800CFE09B /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E9560B4D1E6DA11200B86B73 /* NewsPapers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPapers.swift; sourceTree = "<group>"; };
 		E9560B511E6E061000B86B73 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E9560B551E6E113600B86B73 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		E982F5401E76A57800CFE09B /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				E9560B511E6E061000B86B73 /* CustomTableViewCell.swift */,
 				E9560B551E6E113600B86B73 /* WebViewController.swift */,
 				E94A6A0A1E718C4700E326C3 /* NewsPapersViewController.swift */,
+				E982F5401E76A57800CFE09B /* FavoritesViewController.swift */,
 			);
 			path = "NärNyheter";
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			files = (
 				E94A6A0B1E718C4700E326C3 /* NewsPapersViewController.swift in Sources */,
 				E9560B521E6E061000B86B73 /* CustomTableViewCell.swift in Sources */,
+				E982F5411E76A57800CFE09B /* FavoritesViewController.swift in Sources */,
 				E9560B3A1E6D747200B86B73 /* ViewController.swift in Sources */,
 				E9560B4A1E6D752900B86B73 /* GPSHelper.swift in Sources */,
 				E9560B561E6E113600B86B73 /* WebViewController.swift in Sources */,

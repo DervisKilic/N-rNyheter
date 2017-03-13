@@ -10,15 +10,28 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var favSwitch: UISwitch!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var paper: UILabel!
+    var name = ""
+    var logoName = ""
+    var link = ""
     override func awakeFromNib() {
         super.awakeFromNib()
+        favSwitch.onTintColor = UIColor(red: 0.384, green: 0.662, blue: 1, alpha: 1.0)
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    @IBAction func favSwitch(_ sender: UISwitch) {
+        if sender.isOn{
+            _ = NewsPapers(name: name, link: link, logo: logoName, isFav: true)
+        }else{
+            _ = NewsPapers(name: name, isFav: false)
+        }
     }
 
 }
