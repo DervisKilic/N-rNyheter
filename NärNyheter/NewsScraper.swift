@@ -12,24 +12,24 @@ import Alamofire
 
 class NewsScraper {
     
-    func getScrapedData(url: String){
+    func getScrapedData(url: String, cell: FavoriteCustomTableViewCell){
         
         Alamofire.request(url).responseString { response in
             if let html = response.result.value {
-                self.parseHTML(html: html)
+                if let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8){
+                    
+                    let unformatedpreamble = paper.xpath("//div/article/div/section/p[@class='p-summary leadin']/a")
+                    let header = unformatedpreamble.first?["title"]
+                    let preamble = unformatedpreamble.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                    DispatchQueue.main.async {
+
+                    cell.heading.text = header
+                    cell.preamble.text = preamble
+                    }
+                    
+                    
+                }
             }
-        }
-    }
-    
-    func parseHTML(html: String) -> Void {
-        
-        if let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8){
-            
-            let unformatedpreamble = paper.xpath("//div/article/div/section/p[@class='p-summary leadin']/a")
-            let header = unformatedpreamble.first?["title"]
-            let preable = unformatedpreamble.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            
-            
         }
     }
 }

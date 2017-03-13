@@ -42,7 +42,8 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             favData = favs[indexPath.row] as! Dictionary<String,Any>
             cell.paper.text = favData["name"] as? String
             cell.logo.image = UIImage(named: (favData["logo"] as? String)!)
-            scrapedData.getScrapedData(url: favData["link"] as! String)
+            self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell)
+            
         }
         
         return cell
