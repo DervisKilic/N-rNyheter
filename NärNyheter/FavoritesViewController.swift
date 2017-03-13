@@ -8,28 +8,48 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var favTableView: UITableView!
+    let defaults = UserDefaults.standard
+    var favData = [String: Any]()
+    let scrapedData = NewsScraper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        favTableView.delegate = self
+        favTableView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(favTableView tableView: UITableView) -> Int {
+        return 1
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = defaults.array(forKey: "favorites")?.count{
+            return count
+            
+        }else{
+            
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = favTableView.dequeueReusableCell(withIdentifier: "favcell", for: indexPath) as! FavoriteCustomTableViewCell
+        
+        if let favs = defaults.array(forKey: "favorites"){
+            favData = favs[indexPath.row] as! Dictionary<String,Any>
+            cell.paper.text = favData["name"] as? String
+            cell.logo.image = UIImage(named: (favData["logo"] as? String)!)
+            scrapedData.getScrapedData(url: favData["link"] as! String)
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+    }
+    
 }

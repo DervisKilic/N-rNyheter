@@ -31,6 +31,7 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         
     }
     
+    
     func numberOfSections(newsTableView tableView: UITableView) -> Int {
         return 1
     }
