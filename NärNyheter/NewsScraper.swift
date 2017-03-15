@@ -11,17 +11,21 @@ import Kanna
 import Alamofire
 
 class NewsScraper {
-    
+    var googleLink = ""
     func getScrapedData(url: String, cell: FavoriteCustomTableViewCell){
         
-        Alamofire.request(url).responseString { response in
+        googleLink = ("https://www.google.se/search?q=site:\(url)&tbas=0&tbs=qdr:d,sbd:1&*")
+        
+        Alamofire.request(googleLink).responseString { response in
             if let html = response.result.value {
                 let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8)
+                let unformatedpreamble = paper?.xpath("//a")
+                print(unformatedpreamble![29].text!)
+
                 
-                let unformatedpreamble = paper?.xpath("//article['ltr puff-medium puff-medium--haslink']")
                 if unformatedpreamble?.first?.text! != nil{
-                let preamble = unformatedpreamble?[1].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                let header = unformatedpreamble?[0].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                let preamble = unformatedpreamble?[29].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                let header = unformatedpreamble?[31].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                 cell.heading.text = header
                 cell.preamble.text = preamble
                 }else{

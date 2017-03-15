@@ -285,7 +285,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="preamble" translatesAutoresizingMaskIntoConstraints="NO" id="zpB-1O-9KV">
+                                                <textView contentMode="scaleToFill" editable="NO" text="preamble" translatesAutoresizingMaskIntoConstraints="NO" id="zpB-1O-9KV">
                                                     <rect key="frame" x="8" y="132" width="261" height="163.5"/>
                                                     <color key="backgroundColor" red="0.286478699" green="0.48761824580000002" blue="0.73042868589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
