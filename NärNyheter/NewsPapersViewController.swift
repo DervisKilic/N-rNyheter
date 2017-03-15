@@ -21,17 +21,15 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-        listNewsPaper = defaults.array(forKey: "newsPapers") as! [String]
-        region.text = defaults.string(forKey: "region")!
-        
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        listNewsPaper = defaults.array(forKey: "newsPapers") as! [String]
+        region.text = defaults.string(forKey: "region")!
+    }
+
     func numberOfSections(newsTableView tableView: UITableView) -> Int {
         return 1
     }
@@ -53,6 +51,7 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         cell.name = name
         cell.link = link
         cell.logoName = logo
+        cell.favSwitch.isOn = defaults.bool(forKey: name)
         
         
         

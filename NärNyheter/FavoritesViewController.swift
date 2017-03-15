@@ -42,15 +42,16 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             favData = favs[indexPath.row] as! Dictionary<String,Any>
             cell.paper.text = favData["name"] as? String
             cell.logo.image = UIImage(named: (favData["logo"] as? String)!)
+            cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
+            cell.link = self.favData["link"] as! String
+            cell.logoName = favData["logo"] as! String
             self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell)
             
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
     }
-    
 }

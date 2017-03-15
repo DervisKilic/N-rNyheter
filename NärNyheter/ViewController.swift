@@ -23,14 +23,10 @@ class ViewController: UIViewController {
         favorites.layer.cornerRadius = 5
         favorites.layer.borderWidth = 2
         favorites.layer.borderColor = UIColor.white.cgColor
-        
-        
-        g1.getRegion()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        g1.getRegion()
     }
 }
 
