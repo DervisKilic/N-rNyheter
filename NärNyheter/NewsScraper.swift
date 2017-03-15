@@ -16,15 +16,17 @@ class NewsScraper {
         
         Alamofire.request(url).responseString { response in
             if let html = response.result.value {
-                if let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8){
-                    
-                    let unformatedpreamble = paper.xpath("//div/article/div/section/p[@class='p-summary leadin']/a")
-                    let header = unformatedpreamble.first?["title"]
-                    let preamble = unformatedpreamble.first?.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                    DispatchQueue.main.async {
-                    cell.heading.text = header
-                    cell.preamble.text = preamble
-                    }
+                let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8)
+                
+                let unformatedpreamble = paper?.xpath("//article['ltr puff-medium puff-medium--haslink']")
+                if unformatedpreamble?.first?.text! != nil{
+                let preamble = unformatedpreamble?[1].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                let header = unformatedpreamble?[0].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                cell.heading.text = header
+                cell.preamble.text = preamble
+                }else{
+                    cell.heading.text = "Comming soon"
+                    cell.preamble.text = "Comming soon"
                 }
             }
         }
