@@ -50,14 +50,12 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             self.link.append($0)
             }
             cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
-            
-            
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        test = self.link[indexPath.row]
+        self.test = self.link[indexPath.row]
         print(test)
         performSegue(withIdentifier: "s2", sender: self)
 
@@ -69,7 +67,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         let webView = segue.destination as! WebViewController
         
         if segue.identifier == "s2" {
-            print(test)
+            print(self.test)
             webView.url = test
         }
     }

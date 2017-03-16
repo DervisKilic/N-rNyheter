@@ -13,7 +13,7 @@ import Alamofire
 class NewsScraper {
     let defaults = UserDefaults.standard
     var googleLink = ""
-    var test = ""
+    var unformatedLink = ""
     func getScrapedData(url: String, cell: FavoriteCustomTableViewCell, link: @escaping (String) -> Void){
         
         googleLink = ("https://www.google.se/search?q=site:\(url)&tbs=qdr%3Ad%2Csbd%3A1&*&rct=j")
@@ -35,9 +35,9 @@ class NewsScraper {
                 cell.heading.text = header
                 cell.preamble.text = preamble
                 
-                    self.test = (linkUnformated?.first?.text!)!
+                    self.unformatedLink = (linkUnformated?.first?.text!)!
                    
-                    link(self.test)
+                    link(self.unformatedLink)
                 
                 }else{
                     cell.heading.text = "Comming soon"

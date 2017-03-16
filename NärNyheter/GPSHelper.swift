@@ -35,6 +35,7 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                     if let p1 = self.news.newsPapers[self.pos]{
                         self.defaults.set(p1, forKey: "newsPapers")
                         self.defaults.set(self.pos, forKey: "region")
+                        print(p1)
                     }
                 }
             })
