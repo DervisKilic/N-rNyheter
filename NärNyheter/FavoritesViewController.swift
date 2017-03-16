@@ -13,6 +13,8 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     let defaults = UserDefaults.standard
     var favData = [String: Any]()
     let scrapedData = NewsScraper()
+    var link: [String] = []
+    var test = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +44,33 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             favData = favs[indexPath.row] as! Dictionary<String,Any>
             cell.paper.text = favData["name"] as? String
             cell.logo.image = UIImage(named: (favData["logo"] as? String)!)
-            cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
             cell.link = self.favData["link"] as! String
             cell.logoName = favData["logo"] as! String
-            self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell)
+            self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell){
+            self.link.append($0)
+            }
+            cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
+            
             
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        test = self.link[indexPath.row]
+        print(test)
+        performSegue(withIdentifier: "s2", sender: self)
+
+
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let webView = segue.destination as! WebViewController
         
+        if segue.identifier == "s2" {
+            print(test)
+            webView.url = test
+        }
     }
 }

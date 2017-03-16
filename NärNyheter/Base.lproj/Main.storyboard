@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L15-0d-C8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4042.5" y="120.4225352112676"/>
+            <point key="canvasLocation" x="3081" y="901"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdM-ys-tEa">
@@ -345,6 +345,7 @@
                     </view>
                     <connections>
                         <outlet property="favTableView" destination="ZJd-mx-F5T" id="oTw-zN-UFV"/>
+                        <segue destination="Mzl-zA-0Ov" kind="show" identifier="s2" id="WkN-TX-r1z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnS-9E-mRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,4 +356,7 @@
     <resources>
         <image name="newsPaper" width="1726" height="2400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zFF-ah-awe"/>
+    </inferredMetricsTieBreakers>
 </document>

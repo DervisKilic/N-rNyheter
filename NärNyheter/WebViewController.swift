@@ -10,13 +10,15 @@ import UIKit
 
 class WebViewController: UIViewController {
 
-    var url = URL(string: "")
+    var url = ""
     
     @IBOutlet weak var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let URLRequests = URLRequest(url: url!)
+        let completeURL = URL(string: "http://www.\(url)")
+        print(completeURL!)
+        let URLRequests = URLRequest(url: completeURL!)
         webView.loadRequest(URLRequests)
     }
 }

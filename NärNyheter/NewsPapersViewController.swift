@@ -71,13 +71,8 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "s1" {
             let webView = segue.destination as! WebViewController
-            
-            if let url = URL(string: link){
-                webView.url = url
-            }
+            webView.url = link
         }
         
     }
-    
-    
 }

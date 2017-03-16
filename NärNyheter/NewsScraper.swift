@@ -11,23 +11,34 @@ import Kanna
 import Alamofire
 
 class NewsScraper {
+    let defaults = UserDefaults.standard
     var googleLink = ""
-    func getScrapedData(url: String, cell: FavoriteCustomTableViewCell){
+    var test = ""
+    func getScrapedData(url: String, cell: FavoriteCustomTableViewCell, link: @escaping (String) -> Void){
         
-        googleLink = ("https://www.google.se/search?q=site:\(url)&tbas=0&tbs=qdr:d,sbd:1&*")
+        googleLink = ("https://www.google.se/search?q=site:\(url)&tbs=qdr%3Ad%2Csbd%3A1&*&rct=j")
         
         Alamofire.request(googleLink).responseString { response in
             if let html = response.result.value {
                 let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8)
-                let unformatedpreamble = paper?.xpath("//a")
-                print(unformatedpreamble![29].text!)
-
+                let headerUnformated = paper?.xpath("//*['rso']/h3")
+                let preambleUnformated = paper?.xpath("//*['rso']/span")
+                let linkUnformated = paper?.xpath("//*['rso']/cite")
                 
-                if unformatedpreamble?.first?.text! != nil{
-                let preamble = unformatedpreamble?[29].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                let header = unformatedpreamble?[31].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                for test in headerUnformated!{
+                    print(test.text!)
+                }
+                
+                if headerUnformated?.first?.text! != nil{
+                let preamble = preambleUnformated?[5].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                let header = headerUnformated?[0].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                 cell.heading.text = header
                 cell.preamble.text = preamble
+                
+                    self.test = (linkUnformated?.first?.text!)!
+                   
+                    link(self.test)
+                
                 }else{
                     cell.heading.text = "Comming soon"
                     cell.preamble.text = "Comming soon"
