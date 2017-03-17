@@ -9,11 +9,9 @@
 import UIKit
 
 class WebViewController: UIViewController {
-
+    @IBOutlet weak var webView: UIWebView!
     var url = ""
     
-    @IBOutlet weak var webView: UIWebView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let completeURL = URL(string: "http://www.\(url)")

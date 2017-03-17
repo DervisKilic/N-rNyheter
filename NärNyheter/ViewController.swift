@@ -34,10 +34,5 @@ class ViewController: UIViewController {
         }
         g1.getRegion()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-       
-  
-    }
 }
 

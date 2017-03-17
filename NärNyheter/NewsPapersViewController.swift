@@ -9,7 +9,7 @@
 import UIKit
 
 class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var region: UILabel!
     @IBOutlet weak var newsTableView: UITableView!
     
@@ -29,7 +29,7 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         listNewsPaper = defaults.array(forKey: "newsPapers") as! [String]
         region.text = defaults.string(forKey: "region")!
     }
-
+    
     func numberOfSections(newsTableView tableView: UITableView) -> Int {
         return 1
     }
@@ -59,13 +59,11 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         
         performSegue(withIdentifier: "s1", sender: self)
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "s1" {
             let webView = segue.destination as! WebViewController
             webView.url = link
         }
-        
     }
 }

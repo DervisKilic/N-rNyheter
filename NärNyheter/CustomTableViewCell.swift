@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var favSwitch: UISwitch!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var paper: UILabel!
@@ -20,11 +20,10 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
         favSwitch.onTintColor = UIColor(red: 0.384, green: 0.662, blue: 1, alpha: 1.0)
     }
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     @IBAction func favSwitch(_ sender: UISwitch) {
         if sender.isOn{
@@ -37,5 +36,4 @@ class CustomTableViewCell: UITableViewCell {
         UserDefaults.standard.set(favSwitch.isOn, forKey: paper.text!)
         UserDefaults.standard.synchronize()
     }
-
 }

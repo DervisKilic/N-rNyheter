@@ -31,10 +31,9 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                     print("Error:  \(e?.localizedDescription)")
                 } else {
                     if let myPosition = position?.first?.administrativeArea?.description{
-                    self.pos = myPosition
+                        self.pos = myPosition
                     }
-                    
-                    
+
                     if let p1 = self.news.newsPapers[self.pos]{
                         self.defaults.set(p1, forKey: "newsPapers")
                         self.defaults.set(self.pos, forKey: "region")

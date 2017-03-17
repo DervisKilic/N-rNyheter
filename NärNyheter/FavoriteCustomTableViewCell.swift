@@ -15,16 +15,16 @@ class FavoriteCustomTableViewCell: UITableViewCell {
     @IBOutlet weak var heading: UILabel!
     var link = ""
     var logoName = ""
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         favoriteSwitch.onTintColor = UIColor(red: 0.384, green: 0.662, blue: 1, alpha: 1.0)
-
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     @IBAction func favSwitch(_ sender: UISwitch) {
         if sender.isOn{
