@@ -22,9 +22,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         favTableView.dataSource = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        favTableView.reloadData()
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = defaults.array(forKey: "favorites")?.count{
@@ -39,12 +36,14 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favTableView.dequeueReusableCell(withIdentifier: "favcell", for: indexPath) as! FavoriteCustomTableViewCell
         if let favs = defaults.array(forKey: "favorites"){
+            if favs.indices.contains(indexPath.row){
             favData = favs[indexPath.row] as! Dictionary<String,Any>
             cell.paper.text = favData["name"] as? String
             cell.logo.image = UIImage(named: (favData["logo"] as? String)!)
             cell.logoName = favData["logo"] as! String
             self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell)
             cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
+            }
         }
         return cell
     }
