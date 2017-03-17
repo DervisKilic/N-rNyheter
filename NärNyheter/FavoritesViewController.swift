@@ -42,20 +42,18 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             favData = favs[indexPath.row] as! Dictionary<String,Any>
             cell.paper.text = favData["name"] as? String
             cell.logo.image = UIImage(named: (favData["logo"] as? String)!)
-            cell.link = self.favData["link"] as! String
             cell.logoName = favData["logo"] as! String
-            self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell){
-                let formatedlink = $0.replacingOccurrences(of: "http://www.", with: "", options: .literal, range: nil)
-                self.links.append(formatedlink)
-            }
+            self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell)
             cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        if self.links.indices.contains(indexPath.row){
-            self.link = self.links[indexPath.row]
+        
+        if let cell = favTableView.cellForRow(at: indexPath) as? FavoriteCustomTableViewCell{
+        
+            self.link = cell.link
             performSegue(withIdentifier: "s2", sender: self)
             
         }
@@ -64,7 +62,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let webView = segue.destination as? WebViewController {
             if segue.identifier == "s2" {
-                self.favTableView.reloadData()
                 webView.url = link
             }
         }

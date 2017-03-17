@@ -15,7 +15,7 @@ class NewsScraper {
     var googleLink = ""
     var unformatedLink = ""
     
-    func getScrapedData(url: String, cell: FavoriteCustomTableViewCell, link: @escaping (String) -> Void){
+    func getScrapedData(url: String, cell: FavoriteCustomTableViewCell){
         googleLink = ("http://www.bing.com/news/search?q=site%3A\(url)&qs")
         Alamofire.request(googleLink).responseString { response in
             if let html = response.result.value {
@@ -27,8 +27,9 @@ class NewsScraper {
                     let header = headerUnformated?[0].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                     cell.heading.text = header
                     self.unformatedLink = (linkUnformated?.first?.text!)!
-                    link(self.unformatedLink)
-                    
+                    cell.link = self.unformatedLink
+                    cell.link = cell.link.replacingOccurrences(of: "http://www.", with: "", options: .literal, range: nil)
+
                 }else{
                     cell.heading.text = "Comming soon"
                 }
