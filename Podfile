@@ -8,5 +8,4 @@ target 'NärNyheter' do
   # Pods for NärNyheter
 	pod 'Alamofire', '~> 4.4'
 	pod 'Kanna', '~> 2.2'
-
 end

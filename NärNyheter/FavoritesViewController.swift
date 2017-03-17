@@ -18,13 +18,12 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         favTableView.delegate = self
         favTableView.dataSource = self
     }
     
-    func numberOfSections(favTableView tableView: UITableView) -> Int {
-        return 1
+    override func viewDidAppear(_ animated: Bool) {
+        favTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,28 +46,36 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             cell.link = self.favData["link"] as! String
             cell.logoName = favData["logo"] as! String
             self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell){
-            self.link.append($0)
+                let formatedlink = $0.replacingOccurrences(of: "http://www.", with: "", options: .literal, range: nil)
+                print(formatedlink)
+            self.link.append(formatedlink)
             }
             cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
         }
         return cell
     }
     
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        print(indexPath.row)
+        if self.link.indices.contains(indexPath.row){
         self.test = self.link[indexPath.row]
-        print(test)
         performSegue(withIdentifier: "s2", sender: self)
+            
+        }
 
 
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let webView = segue.destination as! WebViewController
-        
-        if segue.identifier == "s2" {
-            print(self.test)
+        if let webView = segue.destination as? WebViewController {
+            if segue.identifier == "s2" {
             webView.url = test
+                
+            }
         }
     }
 }

@@ -14,6 +14,8 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
     let news = NewsPapers()
     var pos = ""
     let defaults = UserDefaults.standard
+    var gotLocation = false
+    var onDone: (() -> Void)!
     
     func getRegion(){
         manager.requestWhenInUseAuthorization()
@@ -32,10 +34,12 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                     self.pos = myPosition
                     }
                     
+                    
                     if let p1 = self.news.newsPapers[self.pos]{
                         self.defaults.set(p1, forKey: "newsPapers")
                         self.defaults.set(self.pos, forKey: "region")
-                        print(p1)
+                        self.gotLocation = true
+                        self.onDone()
                     }
                 }
             })

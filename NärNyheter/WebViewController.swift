@@ -17,7 +17,6 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let completeURL = URL(string: "http://www.\(url)")
-        print(completeURL!)
         let URLRequests = URLRequest(url: completeURL!)
         webView.loadRequest(URLRequests)
     }
