@@ -23,7 +23,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        favTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +37,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favTableView.dequeueReusableCell(withIdentifier: "favcell", for: indexPath) as! FavoriteCustomTableViewCell
-        
+        self.link = []
         if let favs = defaults.array(forKey: "favorites"){
             favData = favs[indexPath.row] as! Dictionary<String,Any>
             cell.paper.text = favData["name"] as? String
@@ -47,7 +46,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
             cell.logoName = favData["logo"] as! String
             self.scrapedData.getScrapedData(url: self.favData["link"] as! String, cell: cell){
                 let formatedlink = $0.replacingOccurrences(of: "http://www.", with: "", options: .literal, range: nil)
-                print(formatedlink)
             self.link.append(formatedlink)
             }
             cell.favoriteSwitch.isOn = defaults.bool(forKey: cell.paper.text!)
@@ -60,7 +58,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print(indexPath.row)
         if self.link.indices.contains(indexPath.row){
         self.test = self.link[indexPath.row]
         performSegue(withIdentifier: "s2", sender: self)

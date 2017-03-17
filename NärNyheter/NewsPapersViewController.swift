@@ -42,19 +42,12 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
         let paper = listNewsPaper[indexPath.row].components(separatedBy: "#")
-        let name = paper[2]
-        let link = paper[1]
-        let logo = paper[0]
         
-        cell.logo.image = UIImage(named: logo)
-        cell.paper.text = name
-        cell.name = name
-        cell.link = link
-        cell.logoName = logo
-        cell.favSwitch.isOn = defaults.bool(forKey: name)
-        
-        
-        
+        cell.logo.image = UIImage(named: paper[0])
+        cell.paper.text = paper[2]
+        cell.link = paper[1]
+        cell.logoName = paper[0]
+        cell.favSwitch.isOn = defaults.bool(forKey: paper[2])
         return cell
     }
     

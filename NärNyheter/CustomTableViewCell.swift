@@ -14,7 +14,6 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var paper: UILabel!
     let defaults = UserDefaults.standard
-    var name = ""
     var logoName = ""
     var link = ""
     override func awakeFromNib() {
@@ -30,12 +29,12 @@ class CustomTableViewCell: UITableViewCell {
     @IBAction func favSwitch(_ sender: UISwitch) {
         if sender.isOn{
             favSwitch.isOn = true
-            _ = NewsPapers(name: name, link: link, logo: logoName, isFav: true)
+            _ = NewsPapers(name: paper.text!, link: link, logo: logoName, isFav: true)
         }else{
             favSwitch.isOn = false
-            _ = NewsPapers(name: name, isFav: false)
+            _ = NewsPapers(name: paper.text!, isFav: false)
         }
-        UserDefaults.standard.set(favSwitch.isOn, forKey: name)
+        UserDefaults.standard.set(favSwitch.isOn, forKey: paper.text!)
         UserDefaults.standard.synchronize()
     }
 

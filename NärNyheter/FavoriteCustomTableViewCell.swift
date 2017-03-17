@@ -13,7 +13,6 @@ class FavoriteCustomTableViewCell: UITableViewCell {
     @IBOutlet weak var paper: UILabel!
     @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var heading: UILabel!
-    @IBOutlet weak var preamble: UITextView!
     var link = ""
     var logoName = ""
 

@@ -23,12 +23,7 @@ class NewsScraper {
                 let paper = Kanna.HTML(html: html, encoding: String.Encoding.utf8)
                 let headerUnformated = paper?.xpath("//*[@id='rtp']/div[1]/div/div[1]/a['href']")
                 let linkUnformated = paper?.xpath("//*[@id='rtp']/div[1]/div/div[1]/a/@href")
-                
-                print(linkUnformated?.first?.text! as Any)
-                print(headerUnformated?.first?.text! as Any)
-                
-                
-                
+
                 if headerUnformated?.first?.text! != nil{
                     let header = headerUnformated?[0].text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                     cell.heading.text = header
@@ -38,7 +33,6 @@ class NewsScraper {
                     
                 }else{
                     cell.heading.text = "Comming soon"
-                    cell.preamble.text = "Comming soon"
                 }
             }
         }
