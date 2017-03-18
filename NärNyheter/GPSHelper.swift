@@ -18,9 +18,11 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
     var onDone: (() -> Void)!
     
     func getRegion(){
-        manager.requestWhenInUseAuthorization()
         manager.delegate = self
         manager.requestLocation()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
