@@ -41,6 +41,8 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                         self.defaults.set(self.pos, forKey: "region")
                         self.gotLocation = true
                         self.onDone()
+                        manager.stopUpdatingLocation()
+
                     }
                 }
             })

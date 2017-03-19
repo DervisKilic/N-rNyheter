@@ -29,6 +29,9 @@ class NewsPapersViewController: UIViewController,UITableViewDataSource, UITableV
         listNewsPaper = defaults.array(forKey: "newsPapers") as! [String]
         region.text = defaults.string(forKey: "region")!
     }
+    override func viewDidAppear(_ animated: Bool) {
+        newsTableView.reloadData()
+    }
     
     func numberOfSections(newsTableView tableView: UITableView) -> Int {
         return 1
