@@ -34,6 +34,7 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                 } else {
                     if let myPosition = position?.first?.administrativeArea?.description{
                         self.pos = myPosition
+                        print(self.pos)
                     }
 
                     if let p1 = self.news.newsPapers[self.pos]{
