@@ -43,7 +43,6 @@ class GPSHelper: NSObject, CLLocationManagerDelegate {
                         self.gotLocation = true
                         self.onDone()
                         manager.stopUpdatingLocation()
-
                     }
                 }
             })
